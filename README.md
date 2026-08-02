@@ -1,2 +1,1 @@
 # centinela-frontend
-# hello world
