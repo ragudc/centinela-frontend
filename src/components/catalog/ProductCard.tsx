@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatCOP, STOCK_LABEL } from "@/lib/format";
@@ -10,10 +11,20 @@ const STOCK_VARIANT: Record<Product["stockStatus"], "default" | "secondary" | "d
   OUT_OF_STOCK: "destructive",
 };
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product, priority }: { product: Product; priority?: boolean }) {
   return (
     <Link href={`/catalog/product/${product.sku}`}>
       <Card className="h-full transition-colors hover:border-primary">
+        <div className="relative aspect-square w-full overflow-hidden bg-muted">
+          <Image
+            src={product.imageUrl ?? "/products/placeholder.jpg"}
+            alt={product.name}
+            fill
+            priority={priority}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover"
+          />
+        </div>
         <CardHeader className="space-y-2">
           <div className="flex items-start justify-between gap-2">
             <CardTitle className="text-base leading-snug">{product.name}</CardTitle>

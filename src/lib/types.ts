@@ -62,3 +62,25 @@ export interface ProductRecommendation {
   priceCOP: number | null;
   reason: string;
 }
+
+export type LeadSource = "WEB" | "WHATSAPP" | "SOCIAL" | "MARKETPLACE" | "REFERRAL";
+export type LeadStatus = "NEW" | "CONTACTED" | "QUALIFIED" | "CONVERTED" | "DISQUALIFIED";
+
+export interface Lead {
+  id: string;
+  fullName: string;
+  email: string | null;
+  phone: string | null;
+  company: string | null;
+  source: LeadSource;
+  status: LeadStatus;
+  notes: string | null;
+  consentEmail: boolean;
+  consentEmailAt: string | null;
+  consentSms: boolean;
+  consentSmsAt: string | null;
+  consentWhatsapp: boolean;
+  consentWhatsappAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+}

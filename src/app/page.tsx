@@ -3,6 +3,7 @@ import { ShieldCheck, Stethoscope, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getCategories } from "@/lib/catalog";
+import { LeadCaptureForm } from "@/components/leads/LeadCaptureForm";
 
 const BRAND_NAME = process.env.BRAND_NAME ?? "Centinela Dental";
 
@@ -84,6 +85,18 @@ export default async function HomePage() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-lg">
+        <Card>
+          <CardContent className="pt-6">
+            <LeadCaptureForm
+              consentSource="web_form:home_hero"
+              title="Solicita información o una cotización"
+              description="Cuéntanos qué necesita tu clínica o laboratorio y un asesor te contacta."
+            />
+          </CardContent>
+        </Card>
       </section>
     </div>
   );

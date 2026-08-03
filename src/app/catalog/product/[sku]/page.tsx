@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -30,6 +31,17 @@ export default async function ProductDetailPage({
         <ArrowLeft className="h-4 w-4" />
         {product.category.name}
       </Link>
+
+      <div className="relative mx-auto aspect-square w-full max-w-[300px] overflow-hidden rounded-lg bg-muted">
+        <Image
+          src={product.imageUrl ?? "/products/placeholder.jpg"}
+          alt={product.name}
+          fill
+          priority
+          sizes="300px"
+          className="object-cover"
+        />
+      </div>
 
       <div className="space-y-3">
         <div className="flex items-start justify-between gap-4">

@@ -39,7 +39,7 @@ export function ChatInput({
         className="resize-none"
         disabled={disabled}
       />
-      <Button size="icon" onClick={submit} disabled={disabled || !value.trim()}>
+      <Button size="icon-lg" onClick={submit} disabled={disabled || !value.trim()}>
         <SendHorizontal className="h-4 w-4" />
       </Button>
     </div>
