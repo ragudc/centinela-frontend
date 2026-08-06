@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
     // though the response is a valid 200 image — causing blank/broken
     // product images despite the network request "succeeding".
     contentDispositionType: "inline",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
   },
 };
 

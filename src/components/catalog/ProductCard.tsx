@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatCOP, STOCK_LABEL } from "@/lib/format";
+import { resolveProductImage } from "@/lib/cloudinary-images";
 import type { Product } from "@/lib/types";
 
 const STOCK_VARIANT: Record<Product["stockStatus"], "default" | "secondary" | "destructive"> = {
@@ -17,7 +18,7 @@ export function ProductCard({ product, priority }: { product: Product; priority?
       <Card className="h-full transition-colors hover:border-primary">
         <div className="relative aspect-square w-full overflow-hidden bg-muted">
           <Image
-            src={product.imageUrl ?? "/products/placeholder.jpg"}
+            src={resolveProductImage(product.name, product.imageUrl)}
             alt={product.name}
             fill
             priority={priority}

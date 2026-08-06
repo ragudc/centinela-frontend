@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { formatCOP, STOCK_LABEL } from "@/lib/format";
 import { getProductBySku } from "@/lib/catalog";
+import { resolveProductImage } from "@/lib/cloudinary-images";
 
 const STOCK_VARIANT: Record<string, "default" | "secondary" | "destructive"> = {
   IN_STOCK: "secondary",
@@ -34,7 +35,7 @@ export default async function ProductDetailPage({
 
       <div className="relative mx-auto aspect-square w-full max-w-[300px] overflow-hidden rounded-lg bg-muted">
         <Image
-          src={product.imageUrl ?? "/products/placeholder.jpg"}
+          src={resolveProductImage(product.name, product.imageUrl)}
           alt={product.name}
           fill
           priority
