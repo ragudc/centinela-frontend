@@ -56,6 +56,13 @@ export function useChatStream() {
           );
         } else if (frame.event === "escalation") {
           setEscalated(true);
+          setMessages((current) =>
+            current.map((message) =>
+              message.id === assistantMessageId && !message.content
+                ? { ...message, content: "Entendido, te conecto con un asesor humano para que te ayude con esto." }
+                : message,
+            ),
+          );
         } else if (frame.event === "error") {
           setMessages((current) =>
             current.map((message) =>

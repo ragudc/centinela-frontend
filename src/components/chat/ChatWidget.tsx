@@ -22,7 +22,7 @@ export function ChatWidget({ brandName }: { brandName: string }) {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, escalated]);
 
   return (
     <>
@@ -48,14 +48,6 @@ export function ChatWidget({ brandName }: { brandName: string }) {
             </SheetDescription>
           </SheetHeader>
 
-          {escalated && (
-            <div className="mx-4 flex items-center gap-2 rounded-md bg-accent px-3 py-2 text-xs text-accent-foreground">
-              <UserRound className="h-3.5 w-3.5 shrink-0" />
-              Te estamos conectando con un asesor humano. Un miembro de nuestro equipo revisará esta
-              conversación.
-            </div>
-          )}
-
           <ScrollArea className="min-h-0 flex-1 px-4">
             <div className="flex flex-col gap-3 py-4">
               {messages.length === 0 && (
@@ -67,6 +59,13 @@ export function ChatWidget({ brandName }: { brandName: string }) {
               {messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />
               ))}
+              {escalated && (
+                <div className="flex items-center gap-2 rounded-md bg-accent px-3 py-2 text-xs text-accent-foreground">
+                  <UserRound className="h-3.5 w-3.5 shrink-0" />
+                  Te estamos conectando con un asesor humano. Un miembro de nuestro equipo revisará esta
+                  conversación.
+                </div>
+              )}
               <div ref={bottomRef} />
             </div>
           </ScrollArea>
